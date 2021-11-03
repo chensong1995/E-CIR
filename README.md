@@ -18,7 +18,7 @@ conda activate e-cir
 We experimented E-CIR on the [REDS](https://seungjunnah.github.io/Datasets/reds.html) dataset and seven real event captures in [EDI](https://github.com/panpanfei/Bringing-a-Blurry-Frame-Alive-at-High-Frame-Rate-with-an-Event-Camera). Please refer to [REDS\_Dataset.md](REDS_Dataset.md) and [EDI\_Dataset.md](EDI_Dataset.md) for instructions on how to set up these two datasets.
 
 ## Training
-Please set the arguments in `src/main\_reds.py` and run:
+Please set the arguments in `src/main_reds.py` and run:
 ```
 python src/main_reds.py
 ```
