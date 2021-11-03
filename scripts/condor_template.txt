@@ -1,0 +1,7 @@
++Group = "GRAD"
++Project = ""
++ProjectDescription = "Debug"
+
+Requirements = Memory >= 10000 && InMastodon
+environment = PYTHONPATH=/u/author/anaconda3/envs/event/lib/python3.8/site-packages
+executable = /u/author/anaconda3/envs/event/bin/python3
