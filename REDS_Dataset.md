@@ -6,7 +6,7 @@ This document explains how to convert the [REDS](https://seungjunnah.github.io/D
 The conversion process may take a few days to finish because of the use of leaset-squares fitting. Alternatively, consider downloading the conversion results directly from the links below. Warning: the event threshold in ESIM is randomly fluctuating. There will be subtle differences in the output events every time you run the convesion scripts.
 
 ## Download Links
-The conversion results are uploaded to [Google Drive](https://www.google.com/drive/). (Link will be provided after the anonymous period)
+The conversion results are uploaded to [Google Drive](https://drive.google.com/drive/folders/1CzpHWtLnfXeXzIILDuA8Hy9RB8YmMle2?usp=sharing).
 
 The rest of the guide can be skipped entirely if you choose download these .hdf5 files and put them in `data/REDS/`.
 
