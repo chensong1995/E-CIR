@@ -1,5 +1,5 @@
 # E-CIR: Event-Enhanced Continuous Intensity Recovery
-This repository contains authors' implementation of E-CIR: Event-Enhanced Continuous Intensity Recovery. Our implementation uses the [PyTorch](https://pytorch.org/) library. We warmly welcome any discussions related to our implementation and our paper. Please feel free to open an issue.
+This repository contains authors' implementation of [E-CIR: Event-Enhanced Continuous Intensity Recovery](https://arxiv.org/abs/2203.01935). Our implementation uses the [PyTorch](https://pytorch.org/) library. We warmly welcome any discussions related to our implementation and our paper. Please feel free to open an issue.
 
 ## Introduction
 E-CIR consists of an initialization module and a refinement module. The initialization module regresses the polynomial coefficients from the events and the blurry frame. The refinement module further polishes the frame quality by encouraging visual features to propagate across consecutive frames. 
