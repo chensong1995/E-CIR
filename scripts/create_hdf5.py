@@ -64,6 +64,7 @@ def create_voxel(events, num_bins=40, width=32, height=32):
     return voxel_grid
 
 def extract_keypoints(events, n_kpts=10, width=240, height=180):
+    # events: [t, x, y, p]
     # create uniform pivots
     keypoints = np.linspace(-1, 1, n_kpts)[:, None, None]
     interval = keypoints[1] - keypoints[0]
@@ -74,18 +75,17 @@ def extract_keypoints(events, n_kpts=10, width=240, height=180):
     if len(events) == 0:
         return keypoints
     # normalize timestamps to [-1, 1]
-    events[:, 0] = (events[:, 0] - events[0, 0]) / (events[-1, 0] - events[0, 0])
+    events[:, 0] = ((events[:, 0] - events[0, 0]) / (events[-1, 0] - events[0, 0]) - 0.5) * 2
     for t, x, y, _ in events:
         x, y = int(x), int(y)
-        while t >= right:
-            for yy in range(height):
-                for xx in range(width):
-                    if not np.isnan(candidate[yy, xx]):
-                        keypoints[index, yy, xx] = candidate[yy, xx]
-                        changes[yy, xx] += 1
-                        candidate[yy, xx] = np.nan
+        if t >= right:
+            change_mask = ~np.isnan(candidate)
+            keypoints[index][change_mask] = candidate[change_mask]
+            changes[change_mask] += 1
+            candidate = np.full((height, width), np.nan)
             left, right = right, right + interval
             index += 1
+
         if np.isnan(candidate[y, x]):
             candidate[y, x] = t
         else:
@@ -93,11 +93,11 @@ def extract_keypoints(events, n_kpts=10, width=240, height=180):
             new_dist = np.abs(t - keypoints[index, y, x])
             if old_dist > new_dist:
                 candidate[y, x] = t
-    for yy in range(height):
-        for xx in range(width):
-            if not np.isnan(candidate[yy, xx]):
-                keypoints[index, yy, xx] = candidate[yy, xx]
-                changes[yy, xx] += 1
+
+    change_mask = ~np.isnan(candidate)
+    keypoints[index][change_mask] = candidate[change_mask]
+    changes[change_mask] += 1
+
     return keypoints
 
 def extract_primitive_coeffs(L, t, n_deg=10):
